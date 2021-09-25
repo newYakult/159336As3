@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_background"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <ImageView
+            android:id="@+id/login_pic"
+            android:layout_width="182dp"
+            android:layout_height="179dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/massey">
+
+        </ImageView>
+
+        <TextView
+            android:id="@+id/tv_welcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/login_pic"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="@string/tv_welcome_eng"
+            android:textColor="@color/black"
+            android:textSize="26sp">
+
+        </TextView>
+
+        <EditText
+            android:id="@+id/et_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_welcome"
+            android:layout_marginTop="20dp"
+            android:hint="@string/et_id_eng"
+            android:paddingLeft="10dp">
+
+        </EditText>
+
+        <EditText
+            android:id="@+id/et_ps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_id"
+            android:layout_marginTop="30dp"
+            android:paddingLeft="10dp"
+            android:hint="@string/et_pw_eng"
+            android:inputType="textPassword">
+
+        </EditText>
+
+        <Button
+            android:id="@+id/btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_ps"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="30dp"
+            android:background="#60ffff"
+            android:text="@string/btn_login_eng"
+            android:textAllCaps="false" />
+
+    </RelativeLayout>
+
+</ScrollView>
