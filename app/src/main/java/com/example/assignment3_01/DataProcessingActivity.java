@@ -14,6 +14,6 @@ public class DataProcessingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         List<String> SaveList = (List<String>) intent.getSerializableExtra("saved_list");
-        setContentView(R.layout.activity_data_processing);
+        setContentView(R.layout.activity_processing_data);
     }
 }
