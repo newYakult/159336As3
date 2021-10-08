@@ -1,9 +1,0 @@
-<resources>
-    <string name="app_name">Assignment3</string>
-    <string name="btn_login_eng">Login</string>
-    <string name="btn_login_maori">Takiuru</string>
-    <string name="et_id_eng">Enter your Name</string>
-    <string name="et_pw_eng">Enter your password</string>
-    <string name="tv_welcome_eng">Welcome to code scanner</string>
-    <string name="hint_landspace_eng">due to the next activity framework, suggest using Portrait</string>
-</resources>
