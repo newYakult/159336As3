@@ -1,20 +1,21 @@
 package com.example.assignment3_01;
 
-import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import cn.bingoogolapple.qrcode.core.QRCodeView;
@@ -30,22 +31,31 @@ import cn.bingoogolapple.qrcode.core.QRCodeView;
 public class ScanningActivity extends AppCompatActivity {
     private QRCodeView mQRCodeView;
     private Activity activity;
-    private List<String> Detected_Code;
+    private Button btn_ViewData;
+
+
 
     @Override
     public void onCreate(Bundle state) {
+        ArrayList<String> Detected_Code= new ArrayList<String>() ;
         super.onCreate(state);
         activity = this;
         setContentView(R.layout.activity_scanning);
         mQRCodeView =  findViewById(R.id.zxingview);
+        btn_ViewData = findViewById(R.id.btn_show_data);
         mQRCodeView.changeToScanQRCodeStyle();
+
+            btn_ViewData.setEnabled(false);
+
+
         mQRCodeView.setDelegate(new QRCodeView.Delegate() {
 
             @Override
             public void onScanQRCodeSuccess(String result) {
                 Log.d("Result", "result:" + result);//checking the result is correct or not
-                Toast.makeText(activity, "Result: "+result+" Saved", Toast.LENGTH_LONG).show();
+                btn_ViewData.setEnabled(true);
                 Detected_Code.add(result);//adding data to list
+                Toast.makeText(activity, "Result: "+result+" Saved", Toast.LENGTH_LONG).show();
                 vibrate();
                 new Handler().postDelayed(new Runnable() {
                     @Override
@@ -90,9 +100,12 @@ public class ScanningActivity extends AppCompatActivity {
                 Toast.makeText(activity, "closeFlashlight", Toast.LENGTH_SHORT).show();
             }
         });
-        findViewById(R.id.btn_show_data).setOnClickListener(new View.OnClickListener() {
+       // findViewById(R.id.btn_show_data).setOnClickListener(new View.OnClickListener() {
+        btn_ViewData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mQRCodeView.stopSpot();
+                mQRCodeView.closeFlashlight();
                 Intent intent = new Intent(ScanningActivity.this,DataProcessingActivity.class);
                 intent.putExtra("saved_list",(Serializable)Detected_Code);
                 startActivity(intent);
@@ -110,7 +123,7 @@ public class ScanningActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
-        //启动警告，点击返回键保存的数据将会丢失
+
         super.onBackPressed();
     }
     @Override
