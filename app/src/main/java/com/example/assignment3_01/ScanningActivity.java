@@ -38,6 +38,7 @@ public class ScanningActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle state) {
         ArrayList<String> Detected_Code= new ArrayList<String>() ;
+        Detected_Code.clear();
         super.onCreate(state);
         activity = this;
         setContentView(R.layout.activity_scanning);
