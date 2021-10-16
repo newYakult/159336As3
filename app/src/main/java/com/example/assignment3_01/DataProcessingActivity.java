@@ -40,7 +40,7 @@ public  ArrayList<String> SaveList,thisList;
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long l) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(DataProcessingActivity.this);
-                builder.setTitle("Warning").setMessage("Item:"+SaveList.get(position)+" Will be delete").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                builder.setTitle("Warning").setMessage("Item:< "+SaveList.get(position)+" >Will be delete").setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Toast.makeText(DataProcessingActivity.this,"Item :<"+SaveList.get(position)+"> Removed",Toast.LENGTH_LONG).show();
@@ -53,8 +53,6 @@ public  ArrayList<String> SaveList,thisList;
 
                     }
                 }).show();
-
-
                 return false;
             }
         });

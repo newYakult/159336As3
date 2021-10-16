@@ -56,7 +56,7 @@ public class ScanningActivity extends AppCompatActivity {
                 Log.d("Result", "result:" + result);//checking the result is correct or not
                 btn_ViewData.setEnabled(true);
                 Detected_Code.add(result);//adding data to list
-                Toast.makeText(activity, "Result: "+result+" Saved", Toast.LENGTH_LONG).show();
+                Toast.makeText(activity, "Result: "+result+" Saved", Toast.LENGTH_SHORT).show();
                 vibrate();
                 new Handler().postDelayed(new Runnable() {
                     @Override
