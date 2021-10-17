@@ -1,11 +1,13 @@
 package com.example.assignment3_01;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 
@@ -53,5 +55,6 @@ public class ListViewAdapter extends BaseAdapter {
     }
     private class ViewHolder{
         public TextView textView;
+        public Button btn_detail;
     }
 }

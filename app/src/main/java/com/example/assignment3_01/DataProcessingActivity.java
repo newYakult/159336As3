@@ -1,6 +1,7 @@
 package com.example.assignment3_01;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,11 +17,15 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DataProcessingActivity extends AppCompatActivity {
 private RecyclerView recyclerView;
+private Toolbar mToolbar;
 private ListView listView;
 private ListViewAdapter listViewAdapter;
 public  ArrayList<String> SaveList,thisList;
@@ -32,6 +37,19 @@ public  ArrayList<String> SaveList,thisList;
         SaveList = (ArrayList<String>) intent.getSerializableExtra("saved_list");//work
         thisList = SaveList;
         setContentView(R.layout.activity_processing_data);
+        mToolbar = findViewById(R.id.toolbar);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(DataProcessingActivity.this);
+                builder.setTitle("Hint").setMessage("Long Click to delete data").setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                }).show();
+            }
+        });
         listView = findViewById(R.id.lv_View);
         listViewAdapter = new ListViewAdapter(DataProcessingActivity.this,SaveList);
         listView.setAdapter(listViewAdapter);

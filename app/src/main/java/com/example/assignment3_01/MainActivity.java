@@ -10,11 +10,13 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 /*
 * Writing by:
@@ -31,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btn_login;
     private EditText et_id,et_ps;
     private boolean identify = false;
-    private Editable Login_name;
+    private String Login_name;
     private void identify_server(){
         identify = true;
     }
@@ -68,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
             identify_server();
             /*Connected to server to identify password and ID, but Not have server yet, typing anything to login*/
             if (identify) {
-                Login_name = et_id.getText();
+                Login_name = et_id.getText().toString();
                 if (MainActivity.this.getResources().getConfiguration().orientation== Configuration.ORIENTATION_LANDSCAPE){
                     Log.i("info", "landscape");
                     //doing something...
@@ -81,15 +83,24 @@ public class MainActivity extends AppCompatActivity {
                                 return;
                             }).create();
                     alertDialog.show();
-                }else {
-                    //doing something...
-                    Log.i("info", "portrait");
-                    if (Login_name.equals("")){
+                }if (TextUtils.isEmpty(Login_name)){
                         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                        builder.setTitle("").setMessage("").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        final EditText input = new EditText(MainActivity.this);
+                    LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.MATCH_PARENT,
+                            LinearLayout.LayoutParams.MATCH_PARENT);
+                    input.setLayoutParams(lp);
+                    builder.setView(input);
+
+                        builder.setTitle("Warning").setMessage("You Name is Empty").setPositiveButton("Enter", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-
+                                Login_name = input.getText().toString();
+                                if(TextUtils.isEmpty(Login_name)){Toast.makeText(MainActivity.this,"Do not input empty Name!!!",Toast.LENGTH_LONG).show();}
+                                else{et_id.setText(Login_name);
+                                    Toast.makeText(MainActivity.this, "Welcome " + Login_name, Toast.LENGTH_SHORT).show();
+                                    startActivity(intent);
+                                }
                             }
                         }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                             @Override
@@ -97,10 +108,12 @@ public class MainActivity extends AppCompatActivity {
 
                             }
                         }).show();
-                    }
+
+
+                }else {
+                    Toast.makeText(MainActivity.this, "Welcome " + Login_name, Toast.LENGTH_SHORT).show();
                     startActivity(intent);
                 }
-                Toast.makeText(MainActivity.this,"Welcome "+ Login_name,Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -5,22 +5,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DataProcessingActivity">
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?attr/actionBarSize"
         android:layout_weight="1"
-        android:background="#60ffff"
+        android:background="@drawable/cloud"
         android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme" />
+        android:theme="?attr/actionBarTheme"
+        app:navigationIcon="@drawable/img_question"
+        app:title="Saved Data"
+        app:titleMarginStart="90dp"
+        app:titleTextColor="#0739ED" />
 
-<ListView
-    android:layout_below="@+id/toolbar"
-    android:id="@+id/lv_View"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    <ListView
+        android:id="@+id/lv_View"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar">
 
-</ListView>
+    </ListView>
 
 
 </RelativeLayout>
