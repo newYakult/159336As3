@@ -8,11 +8,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import android.app.AlertDialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,7 +50,7 @@ public  ArrayList<String> SaveList,thisList;
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(DataProcessingActivity.this);
-                builder.setTitle("Hint").setMessage("Long Click to delete data").setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                builder.setTitle("Hint").setMessage("Long Click to operate data").setNegativeButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
@@ -57,19 +65,33 @@ public  ArrayList<String> SaveList,thisList;
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long l) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(DataProcessingActivity.this);
-                builder.setTitle("Warning").setMessage("Item:< "+SaveList.get(position)+" >Will be delete").setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(DataProcessingActivity.this,"Item :<"+SaveList.get(position)+"> Removed",Toast.LENGTH_LONG).show();
-                        SaveList.remove(position);
-                        listViewAdapter.notifyDataSetChanged();
-                    }
-                }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-
-                    }
-                }).show();
+                builder.setTitle("What do you want to process this data?");
+                builder.setItems(new CharSequence[]
+                                {"Delete", "Copy", "View in browser", "Cancel"},
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                switch (which) {
+                                    case 0:
+                                        Toast.makeText(DataProcessingActivity.this,"Item :<"+SaveList.get(position)+"> Removed",Toast.LENGTH_LONG).show();
+                                        SaveList.remove(position);
+                                        listViewAdapter.notifyDataSetChanged();
+                                        break;
+                                    case 1:
+                                        ClipboardManager clipboardManager =(ClipboardManager) getSystemService(DataProcessingActivity.this.CLIPBOARD_SERVICE);
+                                        clipboardManager.setPrimaryClip(ClipData.newPlainText(null,SaveList.get(position)));
+                                        Toast.makeText(DataProcessingActivity.this, "Item :<"+SaveList.get(position)+"> Coped", Toast.LENGTH_SHORT).show();
+                                        break;
+                                    case 2:
+                                        Uri url = Uri.parse(SaveList.get(position));
+                                        Intent intent1 = new Intent(Intent.ACTION_VIEW,url);
+                                        startActivity(intent1);
+                                        break;
+                                    case 3:
+                                        break;
+                                }
+                            }
+                        });
+                builder.create().show();
                 return false;
             }
         });

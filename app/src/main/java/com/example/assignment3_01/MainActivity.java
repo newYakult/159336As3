@@ -85,13 +85,12 @@ public class MainActivity extends AppCompatActivity {
                     alertDialog.show();
                 }if (TextUtils.isEmpty(Login_name)){
                         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                        final EditText input = new EditText(MainActivity.this);
-                    LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                            final EditText input = new EditText(MainActivity.this);
+                            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                             LinearLayout.LayoutParams.MATCH_PARENT,
                             LinearLayout.LayoutParams.MATCH_PARENT);
                     input.setLayoutParams(lp);
                     builder.setView(input);
-
                         builder.setTitle("Warning").setMessage("You Name is Empty").setPositiveButton("Enter", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
