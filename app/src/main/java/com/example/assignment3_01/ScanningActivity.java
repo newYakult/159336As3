@@ -26,7 +26,7 @@ import cn.bingoogolapple.qrcode.core.QRCodeView;
 *
 *
 *
-* */
+*/
 
 public class ScanningActivity extends AppCompatActivity {
     private QRCodeView mQRCodeView;
@@ -45,10 +45,7 @@ public class ScanningActivity extends AppCompatActivity {
         mQRCodeView =  findViewById(R.id.zxingview);
         btn_ViewData = findViewById(R.id.btn_show_data);
         mQRCodeView.changeToScanQRCodeStyle();
-
-            btn_ViewData.setEnabled(false);
-
-
+        btn_ViewData.setEnabled(false);
         mQRCodeView.setDelegate(new QRCodeView.Delegate() {
 
             @Override
@@ -118,13 +115,11 @@ public class ScanningActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         mQRCodeView.startCamera();
-
         mQRCodeView.showScanRect();
     }
 
     @Override
     public void onBackPressed(){
-
         super.onBackPressed();
     }
     @Override

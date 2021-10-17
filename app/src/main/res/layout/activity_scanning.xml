@@ -7,7 +7,6 @@
         android:id="@+id/zxingview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         app:qrcv_animTime="1000"
         app:qrcv_borderColor="@android:color/white"
         app:qrcv_borderSize="1px"
@@ -18,12 +17,9 @@
         app:qrcv_isShowTipTextAsSingleLine="true"
         app:qrcv_isTipTextBelowRect="true"
         app:qrcv_maskColor="#64000000"
-
-
         app:qrcv_rectWidth="200dp"
         app:qrcv_scanLineColor="@android:color/holo_green_light"
         app:qrcv_scanLineSize="2dp"
-
         app:qrcv_tipTextColor="@android:color/white"
         app:qrcv_tipTextMargin="15dp"
         app:qrcv_tipTextSize="18dp" />
@@ -73,21 +69,23 @@
             android:text="Light off"
             android:textSize="10sp"/>
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/show_button_layout"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
 
         >
+
         <Button
             android:id="@+id/btn_show_data"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/btn_show_data_text_eng"
-            android:textSize="10sp"
-            android:textAllCaps="false">
+            android:textAllCaps="false"
+            android:textSize="10sp">
 
         </Button>
 

@@ -89,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
                             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                             LinearLayout.LayoutParams.MATCH_PARENT,
                             LinearLayout.LayoutParams.MATCH_PARENT);
+                            input.setHint("Please enter your name");
                     input.setLayoutParams(lp);
                     builder.setView(input);
                         builder.setTitle("Warning").setMessage("You Name is Empty").setPositiveButton("Enter", new DialogInterface.OnClickListener() {

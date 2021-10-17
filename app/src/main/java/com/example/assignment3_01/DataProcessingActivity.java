@@ -67,7 +67,7 @@ public  ArrayList<String> SaveList,thisList;
                 AlertDialog.Builder builder = new AlertDialog.Builder(DataProcessingActivity.this);
                 builder.setTitle("What do you want to process this data?");
                 builder.setItems(new CharSequence[]
-                                {"Delete", "Copy", "View in browser", "Cancel"},
+                                {"Delete", "Copy", "View in browser", "Cancel"},//of course, you can add any button as you like
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 switch (which) {
