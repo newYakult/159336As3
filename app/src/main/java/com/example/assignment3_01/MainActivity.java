@@ -5,6 +5,7 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -83,6 +84,20 @@ public class MainActivity extends AppCompatActivity {
                 }else {
                     //doing something...
                     Log.i("info", "portrait");
+                    if (Login_name.equals("")){
+                        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                        builder.setTitle("").setMessage("").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                            }
+                        }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                            }
+                        }).show();
+                    }
                     startActivity(intent);
                 }
                 Toast.makeText(MainActivity.this,"Welcome "+ Login_name,Toast.LENGTH_SHORT).show();

@@ -23,7 +23,6 @@ public class DataProcessingActivity extends AppCompatActivity {
 private RecyclerView recyclerView;
 private ListView listView;
 private ListViewAdapter listViewAdapter;
-private RecycleViewAdapter recycleViewAdapter;
 public  ArrayList<String> SaveList,thisList;
 
     @Override
